@@ -1,5 +1,5 @@
 import { ReactNode, useContext } from "react";
-import { Footer, Footerbar, Main, Navbar } from "./";
+import { Footer, Main, Navbar } from "./";
 import { ThemeContext } from "@/contexts/ThemeContext";
 
 interface LayoutProps {
@@ -18,9 +18,7 @@ function Layout({ children }: LayoutProps) {
             ? children
             : "This is a Layout container. Must have children"}
         </Main>
-        <Footer className="">
-          <Footerbar />
-        </Footer>
+        <Footer />
       </div>
     </>
   );

@@ -3,16 +3,21 @@ import { Layout } from "../globals";
 
 interface Props {
   children: ReactNode;
-  className: string;
   FULL: boolean;
+  className?: string;
+  customYMargin?: string;
 }
 
-function Page({ children, className, FULL }: Props) {
+function Page({ children, className, FULL, customYMargin }: Props) {
   return (
     <>
       {FULL && (
         <Layout>
-          <section className={`min-h-full min-w-full my-10 ${className}`}>
+          <section
+            className={`min-h-full min-w-full ${
+              customYMargin ? customYMargin : "my-10"
+            } ${className}`}
+          >
             {children
               ? children
               : "This is a Page container. Must have children"}
@@ -22,7 +27,9 @@ function Page({ children, className, FULL }: Props) {
       {!FULL && (
         <Layout>
           <section
-            className={`min-h-full w-11/12 xl:w-4/5 mx-auto my-10 ${className}`}
+            className={`min-h-full w-11/12 xl:w-4/5 mx-auto ${
+              customYMargin ? customYMargin : "my-10"
+            } ${className}`}
           >
             {children
               ? children
