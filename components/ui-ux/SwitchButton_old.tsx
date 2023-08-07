@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
-// import { useJobs } from '@/contexts/JobContext';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -8,45 +7,16 @@ function classNames(...classes: string[]) {
 
 interface SwitchProps {
   labelText: string;
-  filter: string;
 }
 
-const SwitchButton = ({ labelText, filter }: SwitchProps) => {
+const SwitchButton = ({ labelText }: SwitchProps) => {
   const [enabled, setEnabled] = useState(false);
-  // const { sideBarFormState, setSideBarFormState } = useJobs();
-
-  // console.log('Prev State:', sideBarFormState);
-
-  const handleChange = (checked: boolean) => {
-    setEnabled(checked);
-    // switch (filter) {
-    //   case 'remoteOk':
-    //     console.log('Remote Switch Checked:', checked);
-    //     setSideBarFormState((prevState) => {
-    //       return { ...prevState, remoteOk: checked };
-    //     });
-    //     break;
-
-    //   case 'featured':
-    //     console.log('Featured Switch Checked:', checked);
-    //     setSideBarFormState((prevState) => {
-    //       return {
-    //         ...prevState,
-    //         featured: !prevState.featured,
-    //       };
-    //     });
-    //     break;
-
-    //   default:
-    //     break;
-    // }
-  };
 
   return (
     <Switch.Group as="div" className="flex items-center mb-5">
       <Switch
         checked={enabled}
-        onChange={handleChange}
+        onChange={setEnabled}
         className={classNames(
           enabled ? "bg-indigo-600" : "bg-gray-400",
           "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"

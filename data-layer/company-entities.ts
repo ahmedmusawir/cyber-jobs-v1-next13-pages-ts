@@ -6,11 +6,30 @@ export interface CompanyDataSource {
   getCompanyBySlug: (slug: string) => Promise<CompanyData>;
 }
 
+export interface Logo {
+  data: {
+    id: number;
+    attributes: {
+      url: string;
+    };
+  };
+}
+export interface CoverImage {
+  data: {
+    id: number;
+    attributes: {
+      url: string;
+    };
+  };
+}
+
 export interface Company {
   name: string;
   slug: string;
   city: string;
   slogan: string;
+  logo: Logo;
+  coverImage: CoverImage;
 }
 
 export interface CompanyData {

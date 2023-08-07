@@ -163,7 +163,7 @@ const Jobs = () => {
               </div>
             </div>
 
-            <main className="pb-10 pt-5">
+            <main className="pb-10 pt-5 bg-gray-100">
               <div className="px-4 sm:px-6 lg:px-8">
                 {/* Your content */}
 

@@ -10,14 +10,18 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+      // backgroundImage: {
+      //   "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      //   "gradient-conic":
+      //     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      // },
       fontFamily: {
         // sans: ["Inter var"],
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        "gray-rgba-800-50": "rgba(31, 41, 55, 0.5)", // equivalent to bg-gray-800 with 50% opacity
+        "gray-rgba-800-25": "rgba(31, 41, 55, 0.25)", // equivalent to bg-gray-800 with 50% opacity
       },
     },
   },
