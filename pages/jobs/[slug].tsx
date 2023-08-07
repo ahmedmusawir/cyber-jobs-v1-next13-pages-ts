@@ -1,4 +1,4 @@
-import { JobDetails } from "@/components/pages";
+import { JobDetails } from "@/components/page-view";
 import React from "react";
 
 const JobDetailsPage = () => {

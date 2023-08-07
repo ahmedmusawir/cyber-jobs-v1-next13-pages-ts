@@ -1,5 +1,5 @@
 import { Layout } from "@/components/globals";
-import { Home } from "@/components/pages";
+import { Home } from "@/components/page-view";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import db from "../data/jobs.json";
