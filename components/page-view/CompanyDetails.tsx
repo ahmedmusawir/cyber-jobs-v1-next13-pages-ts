@@ -43,7 +43,7 @@ const CompanyDetails = () => {
             Back To Job Board
           </button>
           <h2 className="mb-10">Available Jobs:</h2>
-          <JobList />
+          {/* <JobList /> */}
         </div>
       </Page>
     </>

@@ -7,8 +7,11 @@ import JobList from "../data-view/JobList";
 import { Page, Row } from "../ui-ux";
 import SidebarNav from "../ui-ux/SidebarNav";
 import JobSortForm from "../forms/JobSortForm";
+import { JobApiResponse } from "@/services/jobService";
+import SidebarDesktop from "../ui-ux/SidebarDesktop";
+import SearchForm from "../forms/SearchForm";
 
-const Jobs = () => {
+const JobsPageContent = ({ jobs }: { jobs: JobApiResponse }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -90,21 +93,7 @@ const Jobs = () => {
           </Transition.Root>
 
           {/* DESKTOP SIDEBAR */}
-          {/* <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col"> */}
-          <div className="hidden lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-            {/* Sidebar component, swap this element with another sidebar if you like */}
-            <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
-              <div className="flex shrink-0 items-center">
-                {/* <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                  alt="Your Company"
-                /> */}
-              </div>
-              {/* DESKTOP SIDEBAR NAVIGATION */}
-              <SidebarNav />
-            </div>
-          </div>
+          <SidebarDesktop />
 
           {/* <div className="lg:pl-72"> */}
           <div className="mx-auto">
@@ -129,33 +118,12 @@ const Jobs = () => {
               />
 
               <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-                <form className="relative flex flex-1" action="#" method="GET">
-                  <label htmlFor="search-field" className="sr-only">
-                    Search
-                  </label>
-                  <MagnifyingGlassIcon
-                    className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                  <input
-                    id="search-field"
-                    className="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-                    placeholder="Search..."
-                    type="search"
-                    name="search"
-                  />
-                </form>
+                <SearchForm />
+
                 <div className="flex items-center gap-x-4 lg:gap-x-6">
-                  <button
-                    type="button"
-                    className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
-                  >
-                    <span className="sr-only">View notifications</span>
-                    {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
-                  </button>
                   {/* Separator */}
                   <div
-                    className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10"
+                    className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/20"
                     aria-hidden="true"
                   />
                   <JobSortForm />
@@ -169,7 +137,7 @@ const Jobs = () => {
 
                 <Row className="mx-auto">
                   <h1 className="h1 text-center mb-5">Recent Jobs</h1>
-                  <JobList />
+                  <JobList jobs={jobs} />
                 </Row>
               </div>
             </main>
@@ -180,4 +148,4 @@ const Jobs = () => {
   );
 };
 
-export default Jobs;
+export default JobsPageContent;

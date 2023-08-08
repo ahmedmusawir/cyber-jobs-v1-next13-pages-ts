@@ -15,6 +15,7 @@ export default async function handler(
     return;
   }
 
-  const data = await datasource?.getCompanyBySlug("microsoft-inc");
+  // const data = await datasource?.getCompanyBySlug("microsoft-inc");
+  const data = await datasource?.getCompanyBySlug(slug);
   res.status(200).json(data);
 }

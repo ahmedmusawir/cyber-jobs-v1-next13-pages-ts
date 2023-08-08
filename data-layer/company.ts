@@ -1,26 +1,35 @@
 import qs from "qs";
 import companyService, { CompanyApiResponse } from "../services/companyService";
-import { ApiResponseCompanySlugs, CompanyData } from "./company-entities";
+import { CompanyData } from "./company-entities";
 
+// GETS ALL COMPANIES
 export const getCompanies = async (): Promise<CompanyApiResponse> => {
-  const response = await companyService.getAll();
+  const query = qs.stringify(
+    {
+      populate: ["logo", "coverImage"],
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  const response = await companyService.getAll(query);
 
   return response;
 };
 
-// export const getCompanySlugs = async (): Promise<CompanyApiResponse> => {
+// GETS ONLY ALL COMPANY SLUGS AS AN ARRAY OF STRINGS
 export const getCompanySlugs = async (): Promise<string[]> => {
   const query = qs.stringify({ fields: ["slug"] }, { encodeValuesOnly: true });
 
   const response = await companyService.get(query);
-
-  // console.log("COMPANY SLUGS", response);
 
   const slugs = response.data.map((slug) => slug.attributes.slug);
 
   return slugs;
 };
 
+// GETS SINGLE COMPANY BY IT'S SLUG
 export const getCompanyBySlug = async (slug: string): Promise<CompanyData> => {
   const query = qs.stringify(
     {

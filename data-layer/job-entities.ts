@@ -1,4 +1,5 @@
-import { Company } from "./company-entities";
+import { JobApiResponse } from "@/services/jobService";
+import { Company, CompanyData, CoverImage, Logo } from "./company-entities";
 
 export interface JobSearchQuery {
   remoteOk?: boolean;
@@ -10,10 +11,24 @@ export interface JobSearchQuery {
 }
 
 export interface JobDataSource {
-  getJobs: () => Promise<ApiResponseJobs>;
+  getJobs: () => Promise<JobApiResponse>;
   getJobSlugs: () => Promise<ApiResponseJobSlugs>;
   getJobBySlug: (slug: string) => Promise<JobData>;
-  searchJobs: (query: JobSearchQuery) => Promise<JobData[]>;
+  // searchJobs: (query: JobSearchQuery) => Promise<JobData[]>;
+}
+
+export interface JobCompanyData {
+  data: CompanyData;
+}
+
+export interface JobSkill {
+  id: number;
+  attributes: {
+    name: string;
+  };
+}
+export interface JobSkillArray {
+  data: JobSkill[];
 }
 
 export interface Job {
@@ -21,31 +36,18 @@ export interface Job {
   slug: string;
   remoteOk: boolean;
   annualSalary: number;
-  datePosted: Date;
+  datePosted: string;
   jobType: string;
   jobDescription: string;
   jobCategory: string;
   featured: boolean;
-  company: Company;
+  company: JobCompanyData;
+  skillTags: JobSkillArray;
 }
 
 export interface JobData {
   id: number;
   attributes: Job;
-}
-
-interface Pagination {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
-}
-
-export interface ApiResponseJobs {
-  data: JobData[];
-  meta: {
-    pagination: Pagination;
-  };
 }
 
 export interface Slug {

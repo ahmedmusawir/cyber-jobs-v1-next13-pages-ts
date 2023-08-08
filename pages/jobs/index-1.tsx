@@ -1,4 +1,5 @@
-import JobsPageContent from "@/components/page-view/JobsPageContent";
+import { Jobs } from "@/components/page-view";
+import JobsDataTextPageContent from "@/components/page-view/JobsDataTextPageContent";
 import datasource from "@/data-layer";
 import { JobApiResponse } from "@/services/jobService";
 import React from "react";
@@ -22,8 +23,8 @@ export const getStaticProps = async () => {
   };
 };
 
-const JobsPage = ({ jobs }: { jobs: JobApiResponse }) => {
-  return <JobsPageContent jobs={jobs} />;
+const JobsDataTextPage = ({ jobs }: { jobs: JobApiResponse }) => {
+  return <JobsDataTextPageContent jobs={jobs} />;
 };
 
-export default JobsPage;
+export default JobsDataTextPage;

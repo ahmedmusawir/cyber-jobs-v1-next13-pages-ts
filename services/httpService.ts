@@ -22,8 +22,8 @@ class HttpService<T> {
     this.endpoint = endpoint;
   }
 
-  async getAll(): Promise<ApiResponse<T>> {
-    const res = await apiClient.get(this.endpoint);
+  async getAll(query?: string): Promise<ApiResponse<T>> {
+    const res = await apiClient.get(`${this.endpoint}?${query}`);
     return res.data;
   }
 

@@ -75,7 +75,7 @@ const Navbar = () => {
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   <NavLink href="/">Home</NavLink>
                   <NavLink href="/jobs">Job Board</NavLink>
-                  <NavLink href="/template">Page</NavLink>
+                  <NavLink href="/jobs-data-test">Data Test</NavLink>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
