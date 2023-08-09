@@ -6,7 +6,7 @@ import { CompanyData } from "./company-entities";
 export const getCompanies = async (): Promise<CompanyApiResponse> => {
   const query = qs.stringify(
     {
-      populate: ["logo", "coverImage"],
+      populate: ["logo", "coverImage", "jobs"],
     },
     {
       encodeValuesOnly: true,
@@ -38,7 +38,7 @@ export const getCompanyBySlug = async (slug: string): Promise<CompanyData> => {
           $eq: slug,
         },
       },
-      populate: ["logo", "coverImage"],
+      populate: ["logo", "coverImage", "jobs"],
     },
     {
       encodeValuesOnly: true,

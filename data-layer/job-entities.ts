@@ -12,7 +12,7 @@ export interface JobSearchQuery {
 
 export interface JobDataSource {
   getJobs: () => Promise<JobApiResponse>;
-  getJobSlugs: () => Promise<ApiResponseJobSlugs>;
+  getJobSlugs: () => Promise<string[]>;
   getJobBySlug: (slug: string) => Promise<JobData>;
   // searchJobs: (query: JobSearchQuery) => Promise<JobData[]>;
 }

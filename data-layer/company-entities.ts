@@ -1,4 +1,5 @@
 import { CompanyApiResponse } from "@/services/companyService";
+import { JobData } from "./job-entities";
 
 export interface CompanyDataSource {
   getCompanies: () => Promise<CompanyApiResponse>;
@@ -22,6 +23,9 @@ export interface CoverImage {
     };
   };
 }
+export interface CompanyJobs {
+  data: JobData[];
+}
 
 export interface Company {
   name: string;
@@ -30,6 +34,7 @@ export interface Company {
   slogan: string;
   logo: Logo;
   coverImage: CoverImage;
+  jobs?: CompanyJobs;
 }
 
 export interface CompanyData {

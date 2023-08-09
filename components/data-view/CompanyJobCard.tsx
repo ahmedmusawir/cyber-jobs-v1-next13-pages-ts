@@ -5,7 +5,7 @@ interface JobSingle {
   job: JobData;
 }
 
-const JobCard = ({ job }: JobSingle) => {
+const CompanyJobCard = ({ job }: JobSingle) => {
   const baseUrl = process.env.NEXT_PUBLIC_STRAPI_ASSETS_BASE_URL;
 
   return (
@@ -16,22 +16,22 @@ const JobCard = ({ job }: JobSingle) => {
             {job.attributes.jobType}
           </h5>
           <div className="flex items-center space-x-3">
-            <h3 className="truncate text-sm font-medium text-gray-900">
+            {/* <h3 className="truncate text-sm font-medium text-gray-900">
               {job.attributes.company.data.attributes.name}
-            </h3>
+            </h3> */}
           </div>
           <h1 className="mt-2 text-sm text-gray-500 text-lg truncate">
             {job.attributes.title}
           </h1>
         </div>
-        <img
+        {/* <img
           className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300 mb-10"
           src={
             baseUrl +
             job.attributes.company.data.attributes.logo.data.attributes.url
           }
           alt=""
-        />
+        /> */}
       </div>
       <div>
         <div className="-mt-px flex divide-x divide-gray-200">
@@ -41,7 +41,7 @@ const JobCard = ({ job }: JobSingle) => {
             </h5>
           </div>
           <div className="-ml-px flex w-0 flex-1">
-            <h5 className="text-[.59rem] font-bold p-2">
+            <h5 className="text-[.65rem] font-bold p-2">
               {job.attributes.jobCategory}
             </h5>
           </div>
@@ -51,4 +51,4 @@ const JobCard = ({ job }: JobSingle) => {
   );
 };
 
-export default JobCard;
+export default CompanyJobCard;

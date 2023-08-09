@@ -1,11 +1,9 @@
-import Image from "next/image";
+import { Box, Page, Row } from "@/components/ui-ux";
+import datasource from "@/data-layer";
+import { CompanyData } from "@/data-layer/company-entities";
+import { CompanyApiResponse } from "@/services/companyService";
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import Layout from "@/components/Layout";
-import { Box, Container, Row } from "@/components/globals";
-import datasource from "@/data-layer";
-import { Company, CompanyData } from "@/data-layer/company-entities";
-import { CompanyApiResponse } from "@/services/companyService";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,14 +31,14 @@ export default function HomePage({
 }: {
   companies: CompanyApiResponse;
 }) {
+  console.log("CompanyApiResponse - HomePage:", companies);
   return (
-    <Layout>
+    <>
       <Head>
         <title>Next Starter Home</title>
         <meta name="description" content="This is the demo page" />
       </Head>
-      {/* <Container className={"border border-gray-500"} FULL={false}> */}
-      <Container className={""} FULL={false}>
+      <Page className={""} FULL={false}>
         <Row className="prose max-w-3xl mx-auto">
           <h1 className="h1">
             This is a starting point for ... Next.js 13 (no App router){" "}
@@ -49,7 +47,19 @@ export default function HomePage({
             <h2>Company Names (w/ New Pattern): </h2>
             {companies &&
               companies.data.map((company: CompanyData) => (
-                <li key={company.attributes.slug}>{company.attributes.name}</li>
+                <div key={company.attributes.slug}>
+                  <li>Name: {company.attributes.name}</li>
+                  <li>
+                    Logo Image: {company.attributes.logo.data.attributes.url}
+                  </li>
+                  <li>
+                    Cover Image:{" "}
+                    {company.attributes.coverImage.data.attributes.url}
+                  </li>
+                  <li>Slogan: {company.attributes.slogan}</li>
+                  <li>City: {company.attributes.city}</li>
+                  <li>Slug: {company.attributes.slug}</li>
+                </div>
               ))}
           </Box>
           <Box>
@@ -58,7 +68,7 @@ export default function HomePage({
             {companies && companies.meta.pagination.pageSize}
           </Box>
         </Row>
-      </Container>
-    </Layout>
+      </Page>
+    </>
   );
 }

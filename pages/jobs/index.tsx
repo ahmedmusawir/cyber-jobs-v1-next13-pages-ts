@@ -3,6 +3,10 @@ import datasource from "@/data-layer";
 import { JobApiResponse } from "@/services/jobService";
 import React from "react";
 
+const JobsPage = ({ jobs }: { jobs: JobApiResponse }) => {
+  return <JobsPageContent jobs={jobs} />;
+};
+
 export const getStaticProps = async () => {
   const jobs: JobApiResponse = await datasource.getJobs();
 
@@ -12,7 +16,7 @@ export const getStaticProps = async () => {
   const companyMeta = jobs.meta; // This will be of type { pagination: Pagination }.
 
   // Can even destructure data and meta properties:
-  const { data, meta } = jobs;
+  // const { data, meta } = jobs;
 
   return {
     props: {
@@ -20,10 +24,6 @@ export const getStaticProps = async () => {
     },
     revalidate: 5,
   };
-};
-
-const JobsPage = ({ jobs }: { jobs: JobApiResponse }) => {
-  return <JobsPageContent jobs={jobs} />;
 };
 
 export default JobsPage;
