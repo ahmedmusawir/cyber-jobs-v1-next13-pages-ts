@@ -17,7 +17,7 @@ const JobCard = ({ job }: JobSingle) => {
           </h5>
           <div className="flex items-center space-x-3">
             <h3 className="truncate text-sm font-medium text-gray-900">
-              {job.attributes.company.data.attributes.name}
+              {job.attributes.company?.data.attributes.name}
             </h3>
           </div>
           <h1 className="mt-2 text-sm text-gray-500 text-lg truncate">

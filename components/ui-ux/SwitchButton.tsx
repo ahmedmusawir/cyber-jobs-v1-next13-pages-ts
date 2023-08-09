@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
-// import { useJobs } from '@/contexts/JobContext';
+import { useJobs } from "@/contexts/JobContext";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -13,33 +13,33 @@ interface SwitchProps {
 
 const SwitchButton = ({ labelText, filter }: SwitchProps) => {
   const [enabled, setEnabled] = useState(false);
-  // const { sideBarFormState, setSideBarFormState } = useJobs();
+  const { sideBarFormState, setSideBarFormState } = useJobs();
 
   // console.log('Prev State:', sideBarFormState);
 
   const handleChange = (checked: boolean) => {
     setEnabled(checked);
-    // switch (filter) {
-    //   case 'remoteOk':
-    //     console.log('Remote Switch Checked:', checked);
-    //     setSideBarFormState((prevState) => {
-    //       return { ...prevState, remoteOk: checked };
-    //     });
-    //     break;
+    switch (filter) {
+      case "remoteOk":
+        console.log("Remote Switch Checked:", checked);
+        setSideBarFormState((prevState) => {
+          return { ...prevState, remoteOk: checked };
+        });
+        break;
 
-    //   case 'featured':
-    //     console.log('Featured Switch Checked:', checked);
-    //     setSideBarFormState((prevState) => {
-    //       return {
-    //         ...prevState,
-    //         featured: !prevState.featured,
-    //       };
-    //     });
-    //     break;
+      case "featured":
+        console.log("Featured Switch Checked:", checked);
+        setSideBarFormState((prevState) => {
+          return {
+            ...prevState,
+            featured: !prevState.featured,
+          };
+        });
+        break;
 
-    //   default:
-    //     break;
-    // }
+      default:
+        break;
+    }
   };
 
   return (

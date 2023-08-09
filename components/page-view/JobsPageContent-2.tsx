@@ -10,19 +10,9 @@ import JobSortForm from "../forms/JobSortForm";
 import { JobApiResponse } from "@/services/jobService";
 import SidebarDesktop from "../ui-ux/SidebarDesktop";
 import SearchForm from "../forms/SearchForm";
-import { JobProvider, useJobs } from "@/contexts/JobContext";
 
 const JobsPageContent = ({ jobs }: { jobs: JobApiResponse }) => {
-  return (
-    <JobProvider jobs={jobs}>
-      <JobBoard />
-    </JobProvider>
-  );
-};
-
-const JobBoard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { jobs } = useJobs();
 
   return (
     <>

@@ -14,7 +14,7 @@ export interface JobDataSource {
   getJobs: () => Promise<JobApiResponse>;
   getJobSlugs: () => Promise<string[]>;
   getJobBySlug: (slug: string) => Promise<JobData>;
-  // searchJobs: (query: JobSearchQuery) => Promise<JobData[]>;
+  searchJobs: (query: JobSearchQuery) => Promise<JobData[]>;
 }
 
 export interface JobCompanyData {
