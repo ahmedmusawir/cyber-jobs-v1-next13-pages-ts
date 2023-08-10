@@ -1,5 +1,5 @@
 import { JobApiResponse } from "@/services/jobService";
-import { Company, CompanyData, CoverImage, Logo } from "./company-entities";
+import { CompanyData } from "./company-entities";
 
 export interface JobSearchQuery {
   remoteOk?: boolean;
@@ -14,8 +14,15 @@ export interface JobDataSource {
   getJobs: () => Promise<JobApiResponse>;
   getJobSlugs: () => Promise<string[]>;
   getJobBySlug: (slug: string) => Promise<JobData>;
-  searchJobs: (query: JobSearchQuery) => Promise<JobData[]>;
+  searchJobs: (query: JobSearchQuery) => Promise<JobApiResponse>;
 }
+
+// export interface JobDataSource {
+//   getJobs: () => Promise<JobApiResponse>;
+//   getJobSlugs: () => Promise<string[]>;
+//   getJobBySlug: (slug: string) => Promise<JobData>;
+//   searchJobs: (query: JobSearchQuery) => Promise<JobData[]>;
+// }
 
 export interface JobCompanyData {
   data: CompanyData;

@@ -4,6 +4,21 @@ import { JobData, JobSearchQuery } from "./job-entities";
 
 // GETS ALL JOBS
 export const getJobs = async (): Promise<JobApiResponse> => {
+  // const query = qs.stringify(
+  //   {
+  //     // populate: ["company", "company.logo", "company.coverImage", "skillTags"],
+  //     // "populate[company][populate][0]": "logo,coverImage",
+  //     populate: "skillTags",
+  //   },
+  //   {
+  //     encodeValuesOnly: true,
+  //     arrayFormat: "brackets",
+  //   }
+  // );
+
+  // const query =
+  //   "populate[company][populate][0]=logo,coverImage&populate=skillTags";
+
   const query = qs.stringify(
     {
       populate: ["company", "company.logo", "company.coverImage", "skillTags"],

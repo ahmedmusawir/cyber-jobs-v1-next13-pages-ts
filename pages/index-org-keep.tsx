@@ -1,4 +1,5 @@
-import { Box, Page, Row } from "@/components/ui-ux";
+import { Page } from "@/components/globals";
+import { Box, Row } from "@/components/ui-ux";
 import datasource from "@/data-layer";
 import { CompanyData } from "@/data-layer/company-entities";
 import { CompanyApiResponse } from "@/services/companyService";
