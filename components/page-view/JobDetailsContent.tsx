@@ -5,11 +5,12 @@ import {
 } from "@heroicons/react/20/solid";
 import Head from "next/head";
 import Link from "next/link";
-import { Page } from "../ui-ux";
 import { JobData } from "@/data-layer/job-entities";
 import ReactMarkdown from "react-markdown";
 import styles from "./JobDetailsContent.module.scss";
 import { formatDate } from "@/utils";
+import accounting from "accounting";
+import { Page } from "../globals";
 
 interface Props {
   job: JobData;
@@ -113,7 +114,9 @@ const JobDetailsContent = ({ job }: Props) => {
                       </dt>{" "}
                       <dd className="inline">
                         {job.attributes.skillTags.data.map((skill) => (
-                          <span className="pr-2">{skill.attributes.name}</span>
+                          <span key={skill.id} className="pr-2">
+                            {skill.attributes.name}
+                          </span>
                         ))}{" "}
                       </dd>
                     </div>
@@ -127,7 +130,9 @@ const JobDetailsContent = ({ job }: Props) => {
                         />
                         Annual Salary:
                       </dt>{" "}
-                      <dd className="inline">${job.attributes.annualSalary}</dd>
+                      <dd className="inline">
+                        ${accounting.formatNumber(job.attributes.annualSalary)}
+                      </dd>
                     </div>
                   </dl>
                   <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">

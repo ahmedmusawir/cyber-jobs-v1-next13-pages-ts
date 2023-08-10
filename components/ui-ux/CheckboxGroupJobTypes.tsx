@@ -1,7 +1,7 @@
-// import { useJobs } from '@/contexts/JobContext';
+import { useJobs } from "@/contexts/JobContext";
 
 const CheckboxGroupJobTypes = () => {
-  //   const { sideBarFormState, setSideBarFormState } = useJobs();
+  const { sideBarFormState, setSideBarFormState } = useJobs();
 
   const jobTypesOptions = [
     { value: "full-time", display: "Full Time" },
@@ -14,20 +14,20 @@ const CheckboxGroupJobTypes = () => {
     e: React.ChangeEvent<HTMLInputElement>,
     option: string
   ) => {
-    // if (e.target.checked) {
-    //   setSideBarFormState((prevState) => {
-    //     const jobTypes = [...prevState.jobTypes];
-    //     jobTypes.push(option);
-    //     return { ...prevState, jobTypes };
-    //   });
-    // } else {
-    //   setSideBarFormState((prevState) => {
-    //     return {
-    //       ...prevState,
-    //       jobTypes: prevState.jobTypes.filter((jobType) => option != jobType),
-    //     };
-    //   });
-    // }
+    if (e.target.checked) {
+      setSideBarFormState((prevState) => {
+        const jobTypes = [...prevState.jobTypes];
+        jobTypes.push(option);
+        return { ...prevState, jobTypes };
+      });
+    } else {
+      setSideBarFormState((prevState) => {
+        return {
+          ...prevState,
+          jobTypes: prevState.jobTypes.filter((jobType) => option != jobType),
+        };
+      });
+    }
   };
 
   return (

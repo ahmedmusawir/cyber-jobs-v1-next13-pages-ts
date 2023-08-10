@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
-import { Row, Page } from "../ui-ux";
+import { Row } from "../ui-ux";
+import { Page } from "../globals";
 
 const Template = () => {
   return (

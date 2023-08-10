@@ -1,16 +1,5 @@
-import React from "react";
-import {
-  CalendarIcon,
-  ChartPieIcon,
-  Cog6ToothIcon,
-  DocumentDuplicateIcon,
-  FolderIcon,
-  HomeIcon,
-  UsersIcon,
-  QrCodeIcon,
-} from "@heroicons/react/24/outline";
+import { QrCodeIcon } from "@heroicons/react/24/outline";
 import SidebarForm from "../forms/SidebarForm";
-import CheckboxGroup from "./CheckboxGroup";
 
 const navigation = [
   { name: "Job Board", href: "#", icon: QrCodeIcon, current: true },

@@ -4,13 +4,16 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { XMarkIcon, ChevronDoubleRightIcon } from "@heroicons/react/24/outline";
 import { Fragment, useState } from "react";
 import JobList from "../data-view/JobList";
-import { Page, Row } from "../ui-ux";
 import SidebarNav from "../ui-ux/SidebarNav";
 import JobSortForm from "../forms/JobSortForm";
 import { JobApiResponse } from "@/services/jobService";
 import SidebarDesktop from "../ui-ux/SidebarDesktop";
 import SearchForm from "../forms/SearchForm";
 import { JobProvider, useJobs } from "@/contexts/JobContext";
+import PageNotFoundContent from "./PageNotFoundContent";
+import NotFoundContent from "./NotFoundContent";
+import { Page } from "../globals";
+import { Row } from "../ui-ux";
 
 const JobsPageContent = ({ jobs }: { jobs: JobApiResponse }) => {
   return (
@@ -30,7 +33,7 @@ const JobBoard = () => {
         <title>Job Board</title>
         <meta name="description" content="This is the demo page" />
       </Head>
-      <Page FULL customYMargin="my-1">
+      <Page FULL customYMargin="my-1" className="">
         <div className="flex">
           {/* MOBILE SIDEBAR WITH SLIDE ACTION */}
           <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -103,10 +106,12 @@ const JobBoard = () => {
           </Transition.Root>
 
           {/* DESKTOP SIDEBAR */}
-          <SidebarDesktop />
+          <div className="bg-gray-900">
+            <SidebarDesktop />
+          </div>
 
           {/* <div className="lg:pl-72"> */}
-          <div className="mx-auto">
+          <div className="mx-auto flex-grow">
             <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
               <button
                 type="button"
@@ -141,13 +146,18 @@ const JobBoard = () => {
               </div>
             </div>
 
-            <main className="pb-10 pt-5 bg-gray-100">
+            <main className="pb-10 pt-5 bg-gray-100 min-h-full">
               <div className="px-4 sm:px-6 lg:px-8">
                 {/* Your content */}
 
                 <Row className="mx-auto">
                   <h1 className="h1 text-center mb-5">Recent Jobs</h1>
-                  <JobList jobs={jobs} />
+                  {/* <JobList jobs={jobs} /> */}
+                  {jobs && jobs.data.length > 0 ? (
+                    <JobList jobs={jobs} />
+                  ) : (
+                    <NotFoundContent contentName="Jobs" />
+                  )}
                 </Row>
               </div>
             </main>

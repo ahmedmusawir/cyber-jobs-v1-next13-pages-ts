@@ -1,7 +1,10 @@
+import { useJobs } from "@/contexts/JobContext";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import React from "react";
 
 const SearchForm = () => {
+  const { searchFormState, setSearchFormState } = useJobs();
+
   return (
     <form className="relative flex flex-1" action="#" method="GET">
       <label htmlFor="search-field" className="sr-only">
@@ -17,6 +20,8 @@ const SearchForm = () => {
         placeholder="Search..."
         type="search"
         name="search"
+        value={searchFormState}
+        onChange={(e) => setSearchFormState(e.target.value)}
       />
     </form>
   );

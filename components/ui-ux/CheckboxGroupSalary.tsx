@@ -1,11 +1,11 @@
-// import { useJobs } from "@/contexts/JobContext";
+import { useJobs } from "@/contexts/JobContext";
 
 interface Bounds {
   [key: string]: number;
 }
 
 const CheckboxGroupSalary = () => {
-  //   const { sideBarFormState, setSideBarFormState } = useJobs();
+  const { sideBarFormState, setSideBarFormState } = useJobs();
 
   const baseSalaryRangesOptions = [
     { value: "<20K", display: "< $20K", bounds: { min: 0, max: 20000 } },
@@ -34,34 +34,34 @@ const CheckboxGroupSalary = () => {
     // console.log(e.target.checked, option, bounds);
 
     if (e.target.checked) {
-      //   console.log("Salary Checked");
-      //   setSideBarFormState((prevState) => {
-      //     const baseSalaryOptions = [...prevState.baseSalaryOptions];
-      //     baseSalaryOptions.push(option);
-      //     const baseSalaryBounds = [...prevState.baseSalaryBounds];
-      //     baseSalaryBounds.push(bounds.min);
-      //     baseSalaryBounds.push(bounds.max);
-      //     const newFormState = {
-      //       ...prevState,
-      //       baseSalaryOptions,
-      //       baseSalaryBounds,
-      //     };
-      //     return newFormState;
-      //   });
+      console.log("Salary Checked");
+      setSideBarFormState((prevState) => {
+        const baseSalaryOptions = [...prevState.baseSalaryOptions];
+        baseSalaryOptions.push(option);
+        const baseSalaryBounds = [...prevState.baseSalaryBounds];
+        baseSalaryBounds.push(bounds.min);
+        baseSalaryBounds.push(bounds.max);
+        const newFormState = {
+          ...prevState,
+          baseSalaryOptions,
+          baseSalaryBounds,
+        };
+        return newFormState;
+      });
     } else {
-      //   setSideBarFormState((prevState) => {
-      //     const newFormState = {
-      //       ...prevState,
-      //       baseSalaryOptions: prevState.baseSalaryOptions.filter(
-      //         (baseSalaryOption) => option != baseSalaryOption
-      //       ),
-      //       baseSalaryBounds: prevState.baseSalaryBounds.filter(
-      //         (bound) => ![bounds.min, bounds.max].includes(bound)
-      //       ),
-      //     };
-      //     // console.log(newFormState);
-      //     return newFormState;
-      //   });
+      setSideBarFormState((prevState) => {
+        const newFormState = {
+          ...prevState,
+          baseSalaryOptions: prevState.baseSalaryOptions.filter(
+            (baseSalaryOption) => option != baseSalaryOption
+          ),
+          baseSalaryBounds: prevState.baseSalaryBounds.filter(
+            (bound) => ![bounds.min, bounds.max].includes(bound)
+          ),
+        };
+        // console.log(newFormState);
+        return newFormState;
+      });
     }
   };
 

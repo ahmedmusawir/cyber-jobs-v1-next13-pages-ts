@@ -21,6 +21,7 @@ interface JobContextProps {
   searchFormState: string;
   setSideBarFormState: React.Dispatch<React.SetStateAction<SidebarFormState>>;
   setSearchFormState: React.Dispatch<React.SetStateAction<string>>;
+  setDisplayedJobs: React.Dispatch<React.SetStateAction<JobApiResponse>>;
 }
 
 // Creating the context
@@ -72,18 +73,19 @@ export const JobProvider = ({
   }, [sideBarFormState]);
 
   // trigger a search whenever the search form state changes && length >= 3 -OR- length == 0 (implying a reset)
-  //   useEffectAfterFirstRender(() => {
-  //     if (searchFormState.length >= 3 || searchFormState.length == 0) {
-  //       console.log("JobsContext: searchFormState", searchFormState);
-  //       const formsStates = { searchFormState, sideBarFormState };
-  //       findJobs("api/jobs-search", formsStates);
-  //     }
-  //   }, [searchFormState]);
+  useEffectAfterFirstRender(() => {
+    if (searchFormState.length >= 3 || searchFormState.length == 0) {
+      console.log("JobsContext: searchFormState", searchFormState);
+      const formsStates = { searchFormState, sideBarFormState };
+      findJobs("api/jobs-search", formsStates);
+    }
+  }, [searchFormState]);
 
   return (
     <JobContext.Provider
       value={{
         jobs: displayedJobs,
+        setDisplayedJobs,
         sideBarFormState,
         setSideBarFormState,
         searchFormState,

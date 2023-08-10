@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Page, Row } from "../ui-ux";
+import { Box, Row } from "../ui-ux";
 import Head from "next/head";
+import { Page } from "../globals";
 
 const Demo = () => {
   return (
