@@ -3,7 +3,6 @@ import React from "react";
 import { CompanyData } from "@/data-layer/company-entities";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
-import JobList from "../data-view/JobList";
 import CompanyJobList from "../data-view/CompanyJobList";
 import { Page } from "../globals";
 
