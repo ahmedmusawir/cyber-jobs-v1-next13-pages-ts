@@ -17,8 +17,10 @@ interface SidebarFormState {
 // Defining the shape of the context
 interface JobContextProps {
   jobs: JobApiResponse;
+  currentPage: number;
   sideBarFormState: SidebarFormState;
   searchFormState: string;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   setSideBarFormState: React.Dispatch<React.SetStateAction<SidebarFormState>>;
   setSearchFormState: React.Dispatch<React.SetStateAction<string>>;
   setDisplayedJobs: React.Dispatch<React.SetStateAction<JobApiResponse>>;
@@ -36,6 +38,9 @@ export const JobProvider = ({
 }) => {
   // MAIN JOBS TO DISPLAY
   const [displayedJobs, setDisplayedJobs] = useState(jobs);
+
+  // CURRENT PAGE FOR PAGINATION
+  const [currentPage, setCurrentPage] = useState(1);
 
   // ALL STATES FROM SIDEBAR
   const [sideBarFormState, setSideBarFormState] = useState<SidebarFormState>({
@@ -85,6 +90,8 @@ export const JobProvider = ({
     <JobContext.Provider
       value={{
         jobs: displayedJobs,
+        currentPage,
+        setCurrentPage,
         setDisplayedJobs,
         sideBarFormState,
         setSideBarFormState,

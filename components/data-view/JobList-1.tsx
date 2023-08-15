@@ -2,11 +2,10 @@ import Link from "next/link";
 import JobCard from "./JobCard";
 import { JobApiResponse } from "@/services/jobService";
 import Pagination from "./Pagination";
-import { useJobs } from "@/contexts/JobContext";
+import { useState } from "react";
 
 const JobList = ({ jobs }: { jobs: JobApiResponse }) => {
-  const { currentPage, setCurrentPage } = useJobs();
-
+  const [currentPage, setCurrentPage] = useState(1);
   const { total } = jobs.meta.pagination;
   const pageSize = 8;
   const totalPageCount = Math.ceil(total / pageSize);
@@ -39,7 +38,7 @@ const JobList = ({ jobs }: { jobs: JobApiResponse }) => {
       </ul>
 
       <Pagination
-        currentPage={currentPage}
+        currentPage={jobs.meta.pagination.page}
         totalPageCount={totalPageCount}
         onPageChange={onPageChange}
         pageSize={pageSize}

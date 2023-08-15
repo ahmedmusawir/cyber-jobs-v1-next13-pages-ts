@@ -13,12 +13,14 @@ interface SwitchProps {
 
 const SwitchButton = ({ labelText, filter }: SwitchProps) => {
   const [enabled, setEnabled] = useState(false);
-  const { sideBarFormState, setSideBarFormState } = useJobs();
+  const { sideBarFormState, setSideBarFormState, setCurrentPage } = useJobs();
 
   // console.log('Prev State:', sideBarFormState);
 
   const handleChange = (checked: boolean) => {
     setEnabled(checked);
+    setCurrentPage(1);
+
     switch (filter) {
       case "remoteOk":
         console.log("Remote Switch Checked:", checked);

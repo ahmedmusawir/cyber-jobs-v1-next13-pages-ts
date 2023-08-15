@@ -1,6 +1,7 @@
 // ------------------------
 // DATA FORMATTER FUNCTION
 // ------------------------
+import { TestimonialData } from "@/data-layer/home-page-entities";
 import { JobData } from "@/data-layer/job-entities";
 import { JobApiResponse } from "@/services/jobService";
 import moment from "moment";
@@ -36,7 +37,6 @@ export const useEffectAfterFirstRender = (
 // ---------------------
 // SORTING FUNCTIONS
 // ---------------------
-
 interface SortProp {
   jobs: JobApiResponse;
   ASC?: boolean;
@@ -91,3 +91,57 @@ export const sortJobsByCompanyName = ({ jobs }: SortProp): JobData[] => {
   });
   return sorted;
 };
+
+// --------------------------------------------------------------------------
+// FILLING UP 3 COLUMNS WITH TESTIMONIALS ON HOME PAGE W/ FOLLOWING FUNCTIONS
+// --------------------------------------------------------------------------
+
+export const getTestimonialsSet_1 = (testimonials: TestimonialData[]) => {
+  return testimonials.filter((_, index) => index % 3 === 0);
+};
+
+export const getTestimonialsSet_2 = (testimonials: TestimonialData[]) => {
+  return testimonials.filter((_, index) => index % 3 === 1);
+};
+
+export const getTestimonialsSet_3 = (testimonials: TestimonialData[]) => {
+  return testimonials.filter((_, index) => index % 3 === 2);
+};
+
+// --------------------------------------------------------------------
+// SET TESTIMONIALS IN 4 COLUMNS: DO NOT DELETE THE FOLLOWING FUNCTIONS
+// --------------------------------------------------------------------
+
+// export const setFourColTestimonialsArray = (
+//   testimonialsArray: TestimonialData[]
+// ): TestimonialData[][][] => {
+//   const numCols = 4;
+//   const organizedTestimonials: TestimonialData[][][] = Array.from(
+//     { length: numCols },
+//     () => []
+//   );
+
+//   testimonialsArray.forEach((testimonial, index) => {
+//     const colIndex = index % numCols;
+//     organizedTestimonials[colIndex].push([testimonial]);
+//   });
+
+//   return organizedTestimonials;
+// };
+
+// export const setFourColTestimonialsArray = (
+//   testimonialsArray: TestimonialData[]
+// ) => {
+//   const numCols = 4;
+//   const organizedTestimonials: TestimonialData[][] = Array.from(
+//     { length: numCols },
+//     () => []
+//   );
+
+//   testimonialsArray.forEach((testimonial, index) => {
+//     const colIndex = index % numCols;
+//     organizedTestimonials[colIndex].push(testimonial);
+//   });
+
+//   return organizedTestimonials;
+// };

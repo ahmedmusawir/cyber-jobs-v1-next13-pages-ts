@@ -1,9 +1,8 @@
-// export interface JobDataSource {
-//   getJobs: () => Promise<JobApiResponse>;
-//   getJobSlugs: () => Promise<string[]>;
-//   getJobBySlug: (slug: string) => Promise<JobData>;
-//   searchJobs: (query: JobSearchQuery) => Promise<JobData[]>;
-// }
+import { HomePageApiResponse } from "@/services/homePageService";
+
+export interface HomePageDataSource {
+  getHomePage: () => Promise<HomePageApiResponse>;
+}
 
 export interface HomePageData {
   id: number;
@@ -13,9 +12,20 @@ export interface HomePageData {
 export interface HomePage {
   heroTitle: string;
   heroSlogan: string;
-  createdAt: Date;
-  updatedAt: Date;
   featuredTestimonial: FeaturedTestimonial;
+  testimonials: {
+    data: TestimonialData[];
+  };
+}
+
+export interface TestimonialData {
+  id: number;
+  attributes: Testimonial;
+}
+
+export interface Testimonial {
+  body: string;
+  author: Author;
 }
 
 export interface FeaturedTestimonial {

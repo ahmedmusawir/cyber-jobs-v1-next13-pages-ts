@@ -22,12 +22,22 @@ export const getCompanies = async (): Promise<CompanyApiResponse> => {
 export const getCompanySlugs = async (): Promise<string[]> => {
   const query = qs.stringify({ fields: ["slug"] }, { encodeValuesOnly: true });
 
-  const response = await companyService.get(query);
+  const response = await companyService.getAll(query);
 
   const slugs = response.data.map((slug) => slug.attributes.slug);
 
   return slugs;
 };
+
+// export const getCompanySlugs = async (): Promise<string[]> => {
+//   const query = qs.stringify({ fields: ["slug"] }, { encodeValuesOnly: true });
+
+//   const response = await companyService.get(query);
+
+//   const slugs = response.data.map((slug) => slug.attributes.slug);
+
+//   return slugs;
+// };
 
 // GETS SINGLE COMPANY BY IT'S SLUG
 export const getCompanyBySlug = async (slug: string): Promise<CompanyData> => {

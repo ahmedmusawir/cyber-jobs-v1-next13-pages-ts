@@ -1,6 +1,11 @@
 import Link from "next/link";
 
-const Hero = () => {
+interface Props {
+  title: string;
+  slogan: string;
+}
+
+const Hero = ({ title, slogan }: Props) => {
   return (
     <div className="bg-gray-900">
       <div className="relative isolate overflow-hidden pt-14 px-8">
@@ -33,13 +38,9 @@ const Hero = () => {
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Cyber Jobs
+              {title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat aliqua.
-            </p>
+            <p className="mt-6 text-lg leading-8 text-gray-300">{slogan}</p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/jobs"

@@ -15,6 +15,10 @@ export interface ApiResponse<T> {
   };
 }
 
+export interface ApiResponseSingle<T> {
+  data: T;
+}
+
 class HttpService<T> {
   endpoint: string;
 
@@ -22,12 +26,14 @@ class HttpService<T> {
     this.endpoint = endpoint;
   }
 
+  // Response has an Array of objects
   async getAll(query?: string): Promise<ApiResponse<T>> {
     const res = await apiClient.get(`${this.endpoint}?${query}`);
     return res.data;
   }
 
-  async get(query?: string): Promise<ApiResponse<T>> {
+  // Response has a single object
+  async get(query?: string): Promise<ApiResponseSingle<T>> {
     const res = await apiClient.get(`${this.endpoint}?${query}`);
     return res.data;
   }

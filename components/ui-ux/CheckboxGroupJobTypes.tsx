@@ -1,7 +1,7 @@
 import { useJobs } from "@/contexts/JobContext";
 
 const CheckboxGroupJobTypes = () => {
-  const { sideBarFormState, setSideBarFormState } = useJobs();
+  const { sideBarFormState, setSideBarFormState, setCurrentPage } = useJobs();
 
   const jobTypesOptions = [
     { value: "full-time", display: "Full Time" },
@@ -15,6 +15,10 @@ const CheckboxGroupJobTypes = () => {
     option: string
   ) => {
     if (e.target.checked) {
+      // Setting the current page number to 1
+      setCurrentPage(1);
+
+      // Updating Sidebar state after checking
       setSideBarFormState((prevState) => {
         const jobTypes = [...prevState.jobTypes];
         jobTypes.push(option);
@@ -22,6 +26,7 @@ const CheckboxGroupJobTypes = () => {
       });
     } else {
       setSideBarFormState((prevState) => {
+        // Putting Sidebar state back after un-checking
         return {
           ...prevState,
           jobTypes: prevState.jobTypes.filter((jobType) => option != jobType),

@@ -5,7 +5,7 @@ interface Bounds {
 }
 
 const CheckboxGroupSalary = () => {
-  const { sideBarFormState, setSideBarFormState } = useJobs();
+  const { sideBarFormState, setSideBarFormState, setCurrentPage } = useJobs();
 
   const baseSalaryRangesOptions = [
     { value: "<20K", display: "< $20K", bounds: { min: 0, max: 20000 } },
@@ -31,10 +31,11 @@ const CheckboxGroupSalary = () => {
     option: string,
     bounds: Bounds
   ) => {
-    // console.log(e.target.checked, option, bounds);
-
     if (e.target.checked) {
-      console.log("Salary Checked");
+      // Setting the current page number to 1
+      setCurrentPage(1);
+
+      // Updating Sidebar state after checking
       setSideBarFormState((prevState) => {
         const baseSalaryOptions = [...prevState.baseSalaryOptions];
         baseSalaryOptions.push(option);
@@ -50,6 +51,7 @@ const CheckboxGroupSalary = () => {
       });
     } else {
       setSideBarFormState((prevState) => {
+        // Putting Sidebar state back after un-checking
         const newFormState = {
           ...prevState,
           baseSalaryOptions: prevState.baseSalaryOptions.filter(

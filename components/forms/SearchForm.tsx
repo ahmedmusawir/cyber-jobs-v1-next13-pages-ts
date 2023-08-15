@@ -3,7 +3,14 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import React from "react";
 
 const SearchForm = () => {
-  const { searchFormState, setSearchFormState } = useJobs();
+  const { searchFormState, setSearchFormState, setCurrentPage } = useJobs();
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Setting the current page number to 1
+    setCurrentPage(1);
+    // Updating Search Form state w/ input text
+    setSearchFormState(e.target.value);
+  };
 
   return (
     <form className="relative flex flex-1" action="#" method="GET">
@@ -21,7 +28,7 @@ const SearchForm = () => {
         type="search"
         name="search"
         value={searchFormState}
-        onChange={(e) => setSearchFormState(e.target.value)}
+        onChange={(e) => handleSearch(e)}
       />
     </form>
   );

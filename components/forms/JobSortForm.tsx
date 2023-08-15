@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 
 const JobSortForm = () => {
-  const { jobs, setDisplayedJobs } = useJobs();
+  const { jobs, setDisplayedJobs, setCurrentPage } = useJobs();
   const [sortby, setSortby] = useState("date-posted");
 
   // console.log("Jobs in JobSortForm", jobs.data);
@@ -26,8 +26,11 @@ const JobSortForm = () => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
 
+    // Setting the current page number to 1
+    setCurrentPage(1);
+
     const newSortby = e.target.value;
-    console.log("Sort Text:", newSortby);
+    // console.log("Sort Text:", newSortby);
 
     if (newSortby === "date-posted-asc") {
       const sortedJobsData = sortJobsByDatePosted({

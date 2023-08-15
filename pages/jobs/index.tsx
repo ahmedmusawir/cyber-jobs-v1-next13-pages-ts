@@ -15,7 +15,7 @@ export const getStaticProps = async () => {
   const companyData = jobs.data; // This will be of type CompanyData[].
   const companyMeta = jobs.meta; // This will be of type { pagination: Pagination }.
 
-  // Can even destructure data and meta properties:
+  // Can destructure data and meta properties:
   // const { data, meta } = jobs;
 
   return {
