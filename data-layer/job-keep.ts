@@ -35,15 +35,15 @@ export const getJobs = async (): Promise<JobApiResponse> => {
 };
 
 // GETS ONLY ALL JOB SLUGS AS AN ARRAY OF STRINGS
-export const getJobSlugs = async (): Promise<string[]> => {
-  const query = qs.stringify({ fields: ["slug"] }, { encodeValuesOnly: true });
+// export const getJobSlugs = async (): Promise<string[]> => {
+//   const query = qs.stringify({ fields: ["slug"] }, { encodeValuesOnly: true });
 
-  const response = await jobService.get(query);
+//   const response = await jobService.get(query);
 
-  const slugs = response.data.map((slug) => slug.attributes.slug);
+//   const slugs = response.data.map((slug) => slug.attributes.slug);
 
-  return slugs;
-};
+//   return slugs;
+// };
 
 // GETS SINGLE JOB BY IT'S SLUG
 export const getJobBySlug = async (slug: string): Promise<JobData> => {
